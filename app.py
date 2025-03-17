@@ -6,7 +6,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
 import sys
 import os
 import pandas as pd
@@ -20,12 +19,10 @@ import json
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
-
 # デバッグ情報 - set_page_configの後に移動
 st.write("Python version:", sys.version)
 st.write("Working directory contents:")
 st.write(os.listdir())
-
 # ロギング設定
 logging.basicConfig(
     level=logging.INFO,
@@ -36,17 +33,10 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger("ortho_evidence_app")
-
 # カスタムモジュールをインポート
 from evidence_processor import OrthoEvidenceProcessor
 
-# ページ設定
-st.set_page_config(
-    page_title="歯科矯正エビデンス生成システム",
-    page_icon="🦷",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+# 重複したページ設定を削除しました
 
 # セッション状態の初期化
 if 'processor' not in st.session_state:
@@ -69,7 +59,6 @@ if 'processor' not in st.session_state:
     except Exception as e:
         st.error(f"データベース初期化エラー: {e}")
         logger.error(f"データベース初期化エラー: {e}")
-
 # HTMLレポートを生成する関数
 def generate_html_report(age, gender, issue_ids, issue_names, necessity_score, scenarios, economic_benefits, additional_notes=""):
     processor = st.session_state['processor']
