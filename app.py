@@ -1,22 +1,30 @@
 import streamlit as st
-import sys
+# ページ設定 - 必ず最初のStreamlit命令にする
+st.set_page_config(
+    page_title="歯科矯正エビデンス生成システム",
+    page_icon="🦷",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
-st.write("Python version:", sys.version)
-st.write("Working directory contents:")
+import sys
 import os
-st.write(os.listdir())
 import pandas as pd
 import numpy as np
 from datetime import date
 import re
 import base64
-import os
 import logging
 import sqlite3
 import json
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
+
+# デバッグ情報 - set_page_configの後に移動
+st.write("Python version:", sys.version)
+st.write("Working directory contents:")
+st.write(os.listdir())
 
 # ロギング設定
 logging.basicConfig(
