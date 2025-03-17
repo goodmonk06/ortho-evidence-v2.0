@@ -1,11 +1,14 @@
 import streamlit as st
-# ページ設定 - 必ず最初のStreamlit命令にする
+
+# ページ設定（このコードは必ず最初のStreamlit命令である必要があります）
 st.set_page_config(
     page_title="歯科矯正エビデンス生成システム",
     page_icon="🦷",
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# 他のライブラリをインポート
 import sys
 import os
 import pandas as pd
@@ -19,10 +22,10 @@ import json
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
-# デバッグ情報 - set_page_configの後に移動
-st.write("Python version:", sys.version)
-st.write("Working directory contents:")
-st.write(os.listdir())
+
+# カスタムモジュールをインポート
+from evidence_processor import OrthoEvidenceProcessor
+
 # ロギング設定
 logging.basicConfig(
     level=logging.INFO,
@@ -33,10 +36,11 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger("ortho_evidence_app")
-# カスタムモジュールをインポート
-from evidence_processor import OrthoEvidenceProcessor
 
-# 重複したページ設定を削除しました
+# デバッグ情報 - 本番環境では削除またはコメントアウトする
+# st.write("Python version:", sys.version)
+# st.write("Working directory contents:")
+# st.write(os.listdir())
 
 # セッション状態の初期化
 if 'processor' not in st.session_state:
